@@ -28,6 +28,9 @@
 */
 
 // Code Here 
+function first(array, cb) {
+  cb(array[0]);
+}
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -48,6 +51,9 @@ first(names, function(firstName){
 */
 
 //Code Here
+function last(array, cb) {
+  cb(array[array.length-1]);
+}
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -66,7 +72,9 @@ last(names, function(lastName){
 */
 
 //Code Here
-
+function multiply(num1, num2, cb) {
+  cb(num1 * num2)
+}
 // Do not edit the code below.
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -85,7 +93,14 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
-
+function contains(array, name, cb) {
+  for(var i = 0; i < array.length; i++) {
+    if (array[i] === name) {
+      cb(true);
+    } 
+  }
+  cb(false);
+}
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
   if(result === true){
@@ -106,6 +121,14 @@ contains(names, 'Colt', function(result){
 */
 
 //Code Here
+function uniq (array, cb) {
+  var newArr = array.filter(function(elem, i, array) {
+      return i === array.indexOf(elem);
+  });
+  cb(newArr);
+}
+// uniq([1,2,2,3], cb);
+
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
@@ -116,13 +139,17 @@ uniq(names, function(uniqArr){
 
 
 ////////// PROBLEM 6 //////////
-
 /* 
   Write a function called each that takes in an array of names and a callback function. 
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
-
 //Code Here 
+function each(array, cb) {
+  for (var i = 0; i < array.length; i++) {
+    cb(array[i], i);
+  }
+}
+
 
 // Do not edit the code below.
 each(names, function(item, indice){
@@ -140,7 +167,13 @@ each(names, function(item, indice){
 */
 
 // Code here
-
+function getUserById(array, id, cb) {
+  array.forEach(function(elem) {
+    if (elem.id === id) {
+      cb(elem);
+    }
+  })
+}
 // Do not edit the code below.
 var users = [
   {
